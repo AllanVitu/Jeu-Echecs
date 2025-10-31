@@ -1,4 +1,4 @@
-<template>
+  <template>
     <h1>ChessBreak</h1>
   <div class="auth">
     <div class="card">
