@@ -1,169 +1,19 @@
 <!doctype html>
 <html lang="fr">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="./assets/wait.css">
-    <title>Wait Match</title>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Attente Match</title>
+  <link rel="stylesheet" href="./assets/style.css">
 </head>
-
 <body>
-    <main class="wrap">
-        <div class="top-right">
-            <button class="btn">Accueil</button>
-        </div>
-
-        <h1 class="title">Attente Match</h1>
-        <p class="sub">Recherche en cours… <span id="count">60</span>s</p>
-
-        <div class="loader" aria-hidden="true">
-            <div class="bar"></div>
-        </div>
-
-        <button class="chrono-open" id="openChrono" aria-haspopup="dialog">Chronomètres</button>
-
-        <div class="spacer" aria-hidden="true"></div>
-
-        <button class="danger" id="cancelBtn">Annuler la<br>recherche de Match</button>
-    </main>
-
-    
-    <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="chronoTitle">
-        <div class="modal">
-            <div class="modal-head">
-                <h2 id="chronoTitle">Chronomètres</h2>
-                <button class="btn close" id="closeChrono">Fermer</button>
-            </div>
-
-            <div class="clocks">
-                <section class="clock" aria-labelledby="whiteTitle">
-                    <h3 id="whiteTitle">Blancs</h3>
-                    <div class="time" id="whiteTime">05:00</div>
-                    <div class="row">
-                        <button class="btn small" id="startWhite">Démarrer</button>
-                        <button class="btn small" id="pauseWhite">Pause</button>
-                        <button class="btn small" id="resetWhite">Reset</button>
-                    </div>
-                </section>
-
-                <section class="clock" aria-labelledby="blackTitle">
-                    <h3 id="blackTitle">Noirs</h3>
-                    <div class="time" id="blackTime">05:00</div>
-                    <div class="row">
-                        <button class="btn small" id="startBlack">Démarrer</button>
-                        <button class="btn small" id="pauseBlack">Pause</button>
-                        <button class="btn small" id="resetBlack">Reset</button>
-                    </div>
-                </section>
-
-                <div class="row wide">
-                    <button class="btn small" id="toggleTurn">Basculer le tour</button>
-                    <button class="btn small" id="pauseAll">Pause tout</button>
-                    <button class="btn small" id="resetAll">Tout réinitialiser</button>
-                </div>
-            </div>
-        </div>
+  <main class="container center" style="padding-top:56px; padding-bottom:56px">
+    <div class="top-right"><a class="btn-outline" href="index.html">Accueil</a></div>
+    <h1>Attente Match</h1>
+    <div class="card center" style="width:min(520px,90%);">
+      <a class="btn" href="profil.html">Chronomètres</a>
     </div>
-
-    <script>
-        const countEl = document.getElementById('count');
-        const title = document.querySelector('.title');
-        const loader = document.querySelector('.loader');
-        const cancelBtn = document.getElementById('cancelBtn');
-
-        let remaining = 60;
-        let searchTimer = setInterval(() => {
-            remaining--;
-            if (remaining < 0) remaining = 0;
-            countEl.textContent = remaining;
-            if (remaining === 0) {
-                clearInterval(searchTimer);
-                title.textContent = 'Adversaire trouvé !';
-                loader.style.opacity = .4;
-                cancelBtn.setAttribute('disabled', 'true');
-                cancelBtn.textContent = 'Recherche terminée';
-            }
-        }, 1000);
-
-        cancelBtn.addEventListener('click', () => {
-            if (cancelBtn.disabled) return;
-            cancelBtn.textContent = 'Annulation…';
-            cancelBtn.disabled = true;
-            title.textContent = 'Recherche annulée';
-            loader.style.opacity = .25;
-            clearInterval(searchTimer);
-        });
-
-        const overlay = document.getElementById('overlay');
-        const openChrono = document.getElementById('openChrono');
-        const closeChrono = document.getElementById('closeChrono');
-
-        openChrono.addEventListener('click', () => overlay.classList.add('show'));
-        closeChrono.addEventListener('click', () => overlay.classList.remove('show'));
-        window.addEventListener('keydown', e => { if (e.key === 'Escape') overlay.classList.remove('show'); });
-
-        let white = { ms: 5 * 60 * 1000, running: false, it: null };
-        let black = { ms: 5 * 60 * 1000, running: false, it: null };
-        let active = null; // 'w' ou 'b'
-
-        const whiteTime = document.getElementById('whiteTime');
-        const blackTime = document.getElementById('blackTime');
-
-        const fmt = ms => {
-            ms = Math.max(0, ms);
-            const s = Math.floor(ms / 1000);
-            const m = Math.floor(s / 60);
-            const r = s % 60;
-            return `${String(m).padStart(2, '0')}:${String(r).padStart(2, '0')}`;
-        };
-
-        const render = () => {
-            whiteTime.textContent = fmt(white.ms);
-            blackTime.textContent = fmt(black.ms);
-        };
-
-        const tick = (side) => () => {
-            side.ms -= 100;
-            if (side.ms <= 0) {
-                side.ms = 0;
-                stopAll();
-                alert('Temps écoulé ' + (side === white ? 'Blancs' : 'Noirs'));
-            }
-            render();
-        };
-
-        function start(side) {
-            if (side.running) return;
-            stopAll();
-            side.running = true;
-            active = (side === white ? 'w' : 'b');
-            side.it = setInterval(tick(side), 100);
-        }
-        function pause(side) {
-            side.running = false;
-            clearInterval(side.it); side.it = null;
-        }
-        function stopAll() { pause(white); pause(black); active = null; }
-        function reset(side) { pause(side); side.ms = 5 * 60 * 1000; render(); }
-
-        document.getElementById('startWhite').onclick = () => start(white);
-        document.getElementById('pauseWhite').onclick = () => pause(white);
-        document.getElementById('resetWhite').onclick = () => reset(white);
-
-        document.getElementById('startBlack').onclick = () => start(black);
-        document.getElementById('pauseBlack').onclick = () => pause(black);
-        document.getElementById('resetBlack').onclick = () => reset(black);
-
-        document.getElementById('toggleTurn').onclick = () => {
-            if (active === 'w') start(black);
-            else start(white);
-        };
-        document.getElementById('pauseAll').onclick = () => stopAll();
-        document.getElementById('resetAll').onclick = () => { reset(white); reset(black); };
-
-        render();
-    </script>
+    <div style="height:36vh"></div>
+    <a class="btn-outline" href="creation_match.html">Annuler la recherche de Match</a>
+  </main>
 </body>
-
 </html>

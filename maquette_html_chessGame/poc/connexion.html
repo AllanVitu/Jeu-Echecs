@@ -1,26 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/styles.css">
-    <title>Connexion</title>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Connexion</title>
+  <link rel="stylesheet" href="./assets/style.css">
 </head>
-
 <body>
-    <form class="card" method="post" action="#">
-        <h1>Bienvenue dans ChessGame</h1>
-
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" autocomplete="username" placeholder="toi@exemple.com" required />
-
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" autocomplete="current-password" minlength="6" required />
-
-        <button type="submit">Se connecter</button>
-        <p class="hint">Mot de passe oublié ?</p>
+  <main class="container">
+    <!--<div class="top-right"><a class="btn-outline" href="index.html">Accueil</a></div>-->
+    <h1>Connexion</h1>
+    <form class="card" action="creation_match.html" method="get">
+      <div class="grid2">
+        <input class="input" type="email" required placeholder="Email">
+        <input class="input" type="password" required placeholder="Mot de passe">
+      </div>
+      <div class="row" style="margin-top:14px">
+        <button class="btn" type="submit">Se connecter</button>
+        <a class="btn-outline" href="mdp.html">Changement de mot de passe</a>
+      </div>
     </form>
+    <div class="card center">
+      <p class="small">Pas de compte ?</p>
+      <a class="btn" href="inscription.html">Aller à l’inscription</a>
+    </div>
+  </main>
 </body>
-
 </html>
