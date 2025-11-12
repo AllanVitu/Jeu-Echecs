@@ -17,7 +17,8 @@ body {
   display: center;
   place-items: center;
   background-image: url("./back-two.jpg");
-  background-position: center; 
+  background-position: center;
+  background-repeat: repeat; 
   /*background-size: 32px 32px, 32px 32px, auto;*/
   color: #fff;
   font-family: Arial;
