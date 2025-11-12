@@ -9,32 +9,29 @@
 }
 * {
   box-sizing: border-box;
+  color: #f0b15f;
 }
-html,
+
 body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: grid;
+  margin: auto;
+  display: center;
   place-items: center;
-  background: linear-gradient(transparent 31px, rgba(255, 255, 255, 0.04) 32px),
-    linear-gradient(90deg, transparent 31px, rgba(255, 255, 255, 0.04) 32px),
-    var(--bg);
-  background-size: 32px 32px, 32px 32px, auto;
+  background-image: url("./back-two.jpg");
+  background-position: center; 
+  /*background-size: 32px 32px, 32px 32px, auto;*/
   color: #fff;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  padding: 28px;
+  font-family: Arial;
+  padding: 45px;
 }
 .container {
   width: min(430px, 932px);
   background: var(--panel);
   border: 1.5px solid var(--line);
-  border-radius: var(--rx);
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08) inset,
-    0 28px 70px rgba(0, 0, 0, 0.55);
+  border-radius: 10px; /*var(--rx);*/
+  box-shadow: 0 0 0 2px rgba(231, 37, 37, 0.08) inset,
+    0 28px 70px rgba(255, 254, 254, 0.55);
   padding: 26px 26px 34px;
+  min-height: 750px;
   position: relative;
 }
 .header {
@@ -44,6 +41,11 @@ body {
   gap: 12px;
   margin-bottom: 10px;
 }
+
+.pill{
+  color: azure;
+}
+
 h1 {
   margin: 12px 0 18px;
   text-align: center;
@@ -54,12 +56,12 @@ h2 {
 }
 .btn,
 .btn-outline {
-  display: inline-flex;
+  display: grid;
   align-items: center;
   justify-content: center;
-  height: 42px;
-  padding: 0 18px;
-  border-radius: 12px;
+  height: 40px;
+  padding: 0 28px;
+  border-radius: 5px;
   font-weight: 700;
   text-decoration: none;
   color: #fff;
