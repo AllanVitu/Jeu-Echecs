@@ -28,7 +28,7 @@ body {
   padding: 28px;
 }
 .container {
-  width: min(900px, 96vw);
+  width: min(430px, 932px);
   background: var(--panel);
   border: 1.5px solid var(--line);
   border-radius: var(--rx);
@@ -131,9 +131,39 @@ footer {
   color: var(--muted);
   font-size: 0.85rem;
 }
-@media (max-width: 720px) {
-  .grid2,
-  .grid3 {
-    grid-template-columns: 1fr;
+
+@media screen and (orientation: portrait) and (max-width: 430px) {
+  body { padding: 14px; }
+  .container { width: 97%; padding: 15px; border-radius: 20px; }
+  .header { margin-bottom: 6px; }
+  h1 { margin: 8px 0 12px; }
+
+  /* Inputs & buttons nice & thumb-friendly */
+  .btn, .btn-outline, .input, select {
+    height: 48px;
+    border-radius: 14px;
   }
+
+  /* 1-col forms */
+  .grid2, .grid3 { grid-template-columns: 1fr; }
+
+  /* Chess board overrides */
+  #plateau {
+    width: 100%;
+    max-width: 402px; /* fits 6.1" & 6.7", leaves gutters */
+    grid-template-columns: repeat(8, 1fr) !important;
+  }
+  .case {
+    aspect-ratio: 1/1 !important;
+    font-size: clamp(28px, 8.4vw, 42px) !important;
+  }
+  .board-actions { margin: 6px 0 10px; }
+}
+
+/* Landscape fallback for iPhone widths */
+@media screen and (orientation: landscape) and (max-height: 430px) {
+  body { padding: 10px; }
+  .container { width: 100%; padding: 14px; }
+  #plateau { max-width: 90vh; }
+  .case { font-size: clamp(20px, 6vh, 36px); }
 }
