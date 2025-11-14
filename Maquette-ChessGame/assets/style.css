@@ -9,16 +9,16 @@
 }
 * {
   box-sizing: border-box;
-  color: #f0b15f;
+  color: #f05f5f;
 }
 
 body {
   margin: auto;
   display: center;
   place-items: center;
-  background-image: url("./back-two.jpg");
+  background-image: url("./background.jpg");
   background-position: center;
-  background-repeat: repeat; 
+  background-repeat: repeat;
   /*background-size: 32px 32px, 32px 32px, auto;*/
   color: #fff;
   font-family: Arial;
@@ -43,7 +43,7 @@ body {
   margin-bottom: 10px;
 }
 
-.pill{
+.pill {
   color: azure;
 }
 
@@ -136,37 +136,60 @@ footer {
 }
 
 @media screen and (orientation: portrait) and (max-width: 430px) {
-  body { padding: 14px; }
-  .container { width: 97%; padding: 15px; border-radius: 20px; }
-  .header { margin-bottom: 6px; }
-  h1 { margin: 8px 0 12px; }
+  body {
+    padding: 14px;
+  }
+  .container {
+    width: 97%;
+    padding: 15px;
+    border-radius: 20px;
+  }
+  .header {
+    margin-bottom: 6px;
+  }
+  h1 {
+    margin: 8px 0 12px;
+  }
 
-  /* Inputs & buttons nice & thumb-friendly */
-  .btn, .btn-outline, .input, select {
+  .btn,
+  .btn-outline,
+  .input,
+  select {
     height: 48px;
     border-radius: 14px;
   }
 
-  /* 1-col forms */
-  .grid2, .grid3 { grid-template-columns: 1fr; }
+  .grid2,
+  .grid3 {
+    grid-template-columns: 1fr;
+  }
 
-  /* Chess board overrides */
   #plateau {
     width: 100%;
-    max-width: 402px; /* fits 6.1" & 6.7", leaves gutters */
+    max-width: 402px;
     grid-template-columns: repeat(8, 1fr) !important;
   }
   .case {
     aspect-ratio: 1/1 !important;
     font-size: clamp(28px, 8.4vw, 42px) !important;
   }
-  .board-actions { margin: 6px 0 10px; }
+  .board-actions {
+    margin: 6px 0 10px;
+  }
 }
 
-/* Landscape fallback for iPhone widths */
 @media screen and (orientation: landscape) and (max-height: 430px) {
-  body { padding: 10px; }
-  .container { width: 100%; padding: 14px; }
-  #plateau { max-width: 90vh; }
-  .case { font-size: clamp(20px, 6vh, 36px); }
+  body {
+    padding: 10px;
+  }
+  .container {
+    width: 100%;
+    padding: 14px;
+  }
+  #plateau {
+    max-width: 90vh;
+  }
+  .case {
+    font-size: clamp(20px, 6vh, 36px);
+  }
 }
