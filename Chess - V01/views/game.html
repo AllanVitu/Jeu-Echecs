@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="FR-fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Jeu d’échecs</title>
+  <style>
+
+    .board-wrap {
+      display: grid;
+      place-items: center;
+    }
+
+    body{
+      margin: auto;
+      display: center;
+      place-items: center;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 45px;
+    }
+
+    h1{
+      text-align: center;
+    }
+
+    #plateau {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      width: 420px;
+      border: 1.5px solid var(--line);
+      border-radius: -5px;
+      overflow: hidden;
+    }
+
+    .case {
+      aspect-ratio: 1/1;
+      display: grid;
+      place-items: center;
+      font-size: 190%;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .clair {
+      background: #cccccc;
+      color: #000;
+    }
+
+    .obscur {
+      background: #888888;
+      color: #000;
+    }
+
+    .board-actions {
+      margin: 10px 0 14px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      height: 110px;
+    }
+
+    .btn-loose {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid;
+      border-radius: 5px;
+      height: 30px;
+      padding: 0 15px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(430px, 932px);
+      border: 1.5px solid;
+      background: #eeaeca;
+      background: radial-gradient(circle,
+          rgba(238, 174, 202, 1) 0%,
+          rgba(148, 187, 233, 1) 100%);
+      border-radius: 10px;
+      padding: 26px 26px 34px;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08) inset,
+        0 24px 60px rgba(255, 255, 255, 0.55);
+      min-height: 750px;
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <h1>Game</h1>
+    <div class="board-actions">
+    </div>
+    <div class="board-wrap">
+      <div id="plateau">
+        <div id="1A" class="case obscur">&#9820;</div>
+        <div id="1B" class="case clair">&#9822;</div>
+        <div id="1C" class="case obscur">&#9821;</div>
+        <div class="case clair">&#9819;</div>
+        <div class="case obscur">&#9818;</div>
+        <div class="case clair">&#9821;</div>
+        <div class="case obscur">&#9822;</div>
+        <div class="case clair">&#9820;</div>
+
+        <div class="case clair">&#9823;</div>
+        <div class="case obscur">&#9823;</div>
+        <div class="case clair">&#9823;</div>
+        <div class="case obscur">&#9823;</div>
+        <div class="case clair">&#9823;</div>
+        <div class="case obscur">&#9823;</div>
+        <div class="case clair">&#9823;</div>
+        <div class="case obscur">&#9823;</div>
+
+        <div class="case obscur"></div>
+        <div class="case clair"></div>
+        <div class="case obscur"></div>
+        <div class="case clair"></div>
+        <div class="case obscur"></div>
+        <div class="case clair"></div>
+        <div class="case obscur"></div>
+        <div class="case clair"></div>
+
+        <div class="case clair"></div>
+        <div class="case obscur"></div>
+        <div class="case clair"></div>
+        <div class="case obscur"></div>
+        <div class="case clair"></div>
+        <div class="case obscur"></div>
+        <div class="case clair"></div>
+        <div class="case obscur"></div>
+
+        <div class="case obscur"></div>
+        <div class="case clair"></div>
+        <div class="case obscur"></div>
+        <div class="case clair"></div>
+        <div class="case obscur"></div>
+        <div class="case clair"></div>
+        <div class="case obscur"></div>
+        <div class="case clair"></div>
+
+        <div class="case clair">&#9817;</div>
+        <div class="case obscur">&#9817;</div>
+        <div class="case clair">&#9817;</div>
+        <div class="case obscur">&#9817;</div>
+        <div class="case clair">&#9817;</div>
+        <div class="case obscur">&#9817;</div>
+        <div class="case clair">&#9817;</div>
+        <div class="case obscur">&#9817;</div>
+
+        <div class="case obscur">&#9814;</div>
+        <div class="case clair">&#9816;</div>
+        <div class="case obscur">&#9815;</div>
+        <div class="case clair">&#9813;</div>
+        <div class="case obscur">&#9812;</div>
+        <div class="case clair">&#9815;</div>
+        <div class="case obscur">&#9816;</div>
+        <div class="case clair">&#9814;</div>
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <a class="btn-loose" href="/index.html">Abandonner</a>   
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="FR-fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="./assets/style.css">-->
+    <link rel="stylesheet" href="./assets/test.css">
+    <script src="/assets/main.js"></script>
+    <title>Accueil - ChessGame</title>
+</head>
+
+<!--<script>
+    document.getElementById('connexion').addEventListener('click', () => {
+    
+    const username = document.getElementById('username').value.trim();
+
+    if (username !== '') {
+        window.location.href = './matchList.html';
+    }else {
+        window.location.href = './singin.html'
+    }
+});
+</script>-->
+
+<body>
+    <main class="container">
+        <h1>Accueil<br/>ChessGame</h1>
+        <br/>
+        <form class="card" action="matchList.html" method="get">
+            <div class="grid2">
+                <input class="input" type="email" required placeholder="Email">
+                <input class="input" type="password" required placeholder="Mot de passe">
+            </div>
+
+            <div class="row" style="margin-top:14px;">
+                <button class="btn-outline" type="submit"><a href="./views/matchList.html">Se Connecter</a></button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
