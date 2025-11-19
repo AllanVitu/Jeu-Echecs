@@ -1,11 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/assets/test.css">
+    <title>New Match</title>
 </head>
+
+<style>
+    .btn-choise {
+        display: flex;
+        justify-content: center;
+        height: 25px;
+        padding: 0 3px;
+        color: #fff;
+        font-weight: 450;
+        cursor: pointer
+    }
+
+    .choise-W {
+        color: black;
+        background-color: white !important;
+        border: 1px solid;
+        border-radius: 5px;
+        pointer: cursor;
+    }
+
+    .choise-B {
+        background-color: black !important;
+        border: 1px solid;
+        border-radius: 5px;
+        pointer: cursor;
+    }
+
+    .indic {
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .choise-F {
+        background-color: transparent !important;
+        border: 1px solid;
+        border-radius: 5px;
+        pointer: cursor;
+    }
+
+    .choise-T {
+        background-color: transparent !important;
+        border: 1px solid;
+        border-radius: 5px;
+        pointer: cursor;
+    }
+    .go{
+        display: flex;
+        justify-content: center;
+        border: 1.5px solid;
+        border-radius: 8px;
+        padding: 4px 8px;
+        pointer: cursor;
+    }
+</style>
+
 <body>
-    
+    <main class="container">
+        <h1>Create New Math</h1>
+        <form class="card" action="newMatch.html" method="get">
+            <p class="indic">Veuillez choisir la couleur<br />de vos pions</p>
+            <div class="btn-choise">
+                <button class="choise-W">White</button>
+                <button class="choise-B">Black</button>
+            </div>
+        </form>
+
+        <form class="card" action="newMatch.html" method="get">
+            <p class="indic">Veuillez choisir le temps de la partie</p>
+            <div class="btn-choise">
+                <button class="choise-F">05:00</button>
+                <button class="choise-T">10:00</button>
+            </div>
+        </form>
+
+        <a class="go" href="/views/game.html">GO MATCH</a>
+    </main>
 </body>
 </html>

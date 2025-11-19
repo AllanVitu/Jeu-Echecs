@@ -22,36 +22,64 @@
             min-height: 750px;
             display: grid;
             place-items: center;
+            text-decoration: none;
             color: #ffffff;
             font-family: Arial;
             padding: 45px;
         }
 
         .board {
+            text-decoration: none;
             width: min(430px, 932px);
             background: #EEAECA;
             background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
             border: 1.5px solid;
             border-radius: 10px;
             box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08) inset,
-            0 24px 60px rgba(65, 217, 255, 0.55);
+                0 24px 60px rgba(65, 217, 255, 0.55);
             padding: 26px 26px 34px;
             min-height: 750px;
             position: relative;
         }
-        
+
+        .btn-outline-top {
+            display: flex;
+            justify-content: center;
+            height: 25px;
+            padding: 0 3px;
+            color: #fff;
+            font-weight: 450;
+            cursor: pointer
+        }
+
+        .btn2 {
+            background-color: transparent !important;
+            border: 1px solid;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn3 {
+            background-color: transparent !important;
+            border: 1px solid;
+            border-radius: 5px;
+            text-decoration: none;
+        }
 
         .topbar {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            margin-bottom: 18px;
+            justify-content: center;
+            font-size: 150%;
+            text-decoration: none;
+            gap: 20px;
+            margin-bottom: 50px;
         }
 
         .title {
+            text-align: center;
             font-weight: 600;
-            letter-spacing: 0.2px;
+            letter-spacing: 0.10px;
         }
 
         .btn {
@@ -79,6 +107,7 @@
 
         .btn:active {
             transform: none;
+            text-decoration: none;
             box-shadow: none;
         }
 
@@ -96,6 +125,7 @@
         .match-row {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
+            text-decoration: none;
             border: 1.5px solid;
             border-radius: 9px;
             overflow: hidden;
@@ -107,6 +137,7 @@
         .cell {
             padding: 14px 18px;
             display: flex;
+            text-decoration: none;
             align-items: center;
             border-right: 1px solid rgba(255, 255, 255, 0.35);
         }
@@ -129,6 +160,7 @@
             align-items: stretch;
             justify-content: stretch;
             height: 100%;
+            text-decoration: none;
         }
 
         .join button {
@@ -147,6 +179,10 @@
             box-shadow: inset 0 0 0 999px rgba(143, 211, 255, 0.04);
             color: #e7f6ff;
         }
+        .trans{
+            color: transparent;
+        }
+
 
         /* Putain de responsive */
         /*@media (max-width: 430px) {
@@ -185,9 +221,17 @@
                 <div class="title">Wait Match</div>
             </div>
 
-            <br/>
-            <br/>
+            <div class="btn-outline-top">
+                <button class="btn2"><a href="/views/newMatch.html">Create new match</a></button>
+                <p class="trans"> ehtiobv </p>
+                <button class="btn3"><a href="/views/profile.html">Profil</a></button>
+            </div>
             
+
+
+            <br />
+            <br />
+
             <article class="match-row">
                 <div class="cell pseudo">Michael</div>
                 <div class="cell color">White</div>

@@ -11,6 +11,7 @@
 * {
   box-sizing: border-box;
   color: #fff;
+  text-decoration: none;
 }
 
 body {
@@ -43,11 +44,17 @@ h1 {
   position: relative;
 }
 
+.row{
+  display: flex;
+  justify-content: space-between;
+}
+
 .btn,
 .btn-outline {
   display: grid;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 10px;
   height: 30px;
   padding: 0 15px;
   border-radius: 5px;
@@ -56,6 +63,26 @@ h1 {
   background: transparent;
   cursor: pointer;
   transition: transform 0.12s, box-shadow 0.12s, background 0.12s;
+}
+
+.btn,
+.btn-outline2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  padding: 0 15px;
+  border-radius: 5px;
+  font-weight: 500;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.12s, background 0.12s;
+}
+
+.mdp-oublie{
+  display: flex;
+  justify-content: center;
 }
 
 .header {
