@@ -4,42 +4,66 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <link rel="shortcut icon" type="image/png" href="./assets/imgs/favicon.png" />
   <title>Jeu d’échecs</title>
   <style>
-
     .board-wrap {
       display: grid;
       place-items: center;
     }
 
-    body{
-      margin: auto;
+    body {
+      /*margin: auto;*/
       display: center;
       place-items: center;
       font-family: Arial, Helvetica, sans-serif;
       padding: 45px;
     }
 
-    h1{
+    h1 {
       text-align: center;
     }
 
     #plateau {
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
+      display: flex;
       width: 420px;
-      border: 1.5px solid var(--line);
-      border-radius: -5px;
-      overflow: hidden;
+      flex-flow: row wrap;
     }
 
     .case {
-      aspect-ratio: 1/1;
-      display: grid;
-      place-items: center;
+      width: 50px;
+      height: 50px;
+      align-items: center;
       font-size: 190%;
       line-height: 1;
       user-select: none;
+    }
+
+    .noir {
+      text-align: center;
+      text-transform: uppercase;
+      /*padding: 10%;
+      font-size: 60%;*/
+      line-height: 1;
+      user-select: none;
+      background: #000;
+      color: #fff;
+    }
+
+    .top, .bottom {
+      margin: 0px;
+      height: 10px;
+      width: 50px;
+    }
+
+    .corner {
+      height: 10px;
+      width: 10px;
+    }
+
+    .side {
+      height: 50px;
+      width: 10px;
     }
 
     .clair {
@@ -87,7 +111,101 @@
       min-height: 750px;
       position: relative;
     }
+
+    .center {
+      position: absolute;
+      top: 85%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .popup {
+      position: fixed;
+      top: 0%;
+      left: 0%;
+      width: 100%;
+      height: 100%;
+    }
+
+    .popup .overlay {
+      position: fixed;
+      top: 0%;
+      left: 0%;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.05);
+      opacity: 0;
+      transition: opacity 100ms ease-in-out 200ms;
+    }
+
+    .popup .popup-content {
+      position: absolute;
+      top: 85%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.15);
+      width: 95%;
+      max-width: 350px;
+      background: #fff;
+      border-radius: 15px;
+      opacity: 0;
+      box-shadow: 0px 2px 2px 5px rgba(0, 0, 0, 0.05);
+      transition: all 300ms ease-in-out;
+    }
+
+    .popup .popup-content h2 {
+      margin: 10px 6px;
+      font-size: 25px;
+      color: #111;
+      text-align: center;
+    }
+
+    .popup .popup-content p {
+      margin: 15px 0px;
+      color: #222;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .popup .popup-content .controls {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0px 0px;
+    }
+
+    .popup .popup-content .controls button {
+      padding: 10px 20px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+
+    .popup .popup-content .controls .bck-accueil {
+      background: transparent;
+      color: #3284ed;
+    }
+
+    .popup .popup-content .controls .bck-list {
+      background: #3284ed;
+      color: #fff;
+    }
+
+    .popup.active {
+      top: 0%;
+      transition: top 0ms ease-in-out 0ms;
+    }
+
+    .popup.active .overlay {
+      opacity: 1;
+      transition: all 300ms ease-in-out;
+    }
+
+    .popup.active .popup-content {
+      transform: translate(-50%, -50%) scale(1.15);
+    }
   </style>
+
 </head>
 
 <body>
@@ -97,25 +215,41 @@
     </div>
     <div class="board-wrap">
       <div id="plateau">
-        <div id="1A" class="case obscur">&#9820;</div>
-        <div id="1B" class="case clair">&#9822;</div>
-        <div id="1C" class="case obscur">&#9821;</div>
-        <div class="case clair">&#9819;</div>
-        <div class="case obscur">&#9818;</div>
-        <div class="case clair">&#9821;</div>
-        <div class="case obscur">&#9822;</div>
+
+        <div class="noir corner"></div>
+        <div class="noir top">A</div>
+        <div class="noir top">B</div>
+        <div class="noir top">C</div>
+        <div class="noir top">D</div>
+        <div class="noir top">E</div>
+        <div class="noir top">F</div>
+        <div class="noir top">G</div>
+        <div class="noir top">H</div>
+        <div class="noir corner"></div>
+
+        <div class="noir side">1</div>
         <div class="case clair">&#9820;</div>
+        <div class="case obscur">&#9822;</div>
+        <div class="case clair">&#9821;</div>
+        <div class="case obscur">&#9819;</div>
+        <div class="case clair">&#9818;</div>
+        <div class="case obscur">&#9821;</div>
+        <div class="case clair">&#9822;</div>
+        <div class="case obscur">&#9820;</div>
+        <div class="noir side">1</div>
 
+        <div class="noir side">2</div>
+        <div id="2A" class="case obscur">&#9823;</div>
+        <div id="2B" class="case clair">&#9823;</div>
+        <div id="2C" class="case obscur">&#9823;</div>
         <div class="case clair">&#9823;</div>
         <div class="case obscur">&#9823;</div>
         <div class="case clair">&#9823;</div>
         <div class="case obscur">&#9823;</div>
         <div class="case clair">&#9823;</div>
-        <div class="case obscur">&#9823;</div>
-        <div class="case clair">&#9823;</div>
-        <div class="case obscur">&#9823;</div>
+        <div class="noir side">2</div>
 
-        <div class="case obscur"></div>
+        <div class="noir side">3</div>
         <div class="case clair"></div>
         <div class="case obscur"></div>
         <div class="case clair"></div>
@@ -123,8 +257,10 @@
         <div class="case clair"></div>
         <div class="case obscur"></div>
         <div class="case clair"></div>
+        <div class="case obscur"></div>
+        <div class="noir side">3</div>
 
-        <div class="case clair"></div>
+        <div class="noir side">4</div>
         <div class="case obscur"></div>
         <div class="case clair"></div>
         <div class="case obscur"></div>
@@ -132,8 +268,10 @@
         <div class="case obscur"></div>
         <div class="case clair"></div>
         <div class="case obscur"></div>
+        <div class="case clair"></div>
+        <div class="noir side">4</div>
 
-        <div class="case obscur"></div>
+        <div class="noir side">5</div>
         <div class="case clair"></div>
         <div class="case obscur"></div>
         <div class="case clair"></div>
@@ -141,7 +279,21 @@
         <div class="case clair"></div>
         <div class="case obscur"></div>
         <div class="case clair"></div>
+        <div class="case obscur"></div>
+        <div class="noir side">5</div>
 
+        <div class="noir side">6</div>
+        <div class="case obscur"></div>
+        <div class="case clair"></div>
+        <div class="case obscur"></div>
+        <div class="case clair"></div>
+        <div class="case obscur"></div>
+        <div class="case clair"></div>
+        <div class="case obscur"></div>
+        <div class="case clair"></div>
+        <div class="noir side">6</div>
+
+        <div class="noir side">7</div>
         <div class="case clair">&#9817;</div>
         <div class="case obscur">&#9817;</div>
         <div class="case clair">&#9817;</div>
@@ -150,7 +302,9 @@
         <div class="case obscur">&#9817;</div>
         <div class="case clair">&#9817;</div>
         <div class="case obscur">&#9817;</div>
+        <div class="noir side">7</div>
 
+        <div class="noir side">8</div>
         <div class="case obscur">&#9814;</div>
         <div class="case clair">&#9816;</div>
         <div class="case obscur">&#9815;</div>
@@ -159,16 +313,33 @@
         <div class="case clair">&#9815;</div>
         <div class="case obscur">&#9816;</div>
         <div class="case clair">&#9814;</div>
+        <div class="noir side">8</div>
+
+        <div class="noir corner"></div>
+        <div class="noir bottom">A</div>
+        <div class="noir bottom">B</div>
+        <div class="noir bottom">C</div>
+        <div class="noir bottom">D</div>
+        <div class="noir bottom">E</div>
+        <div class="noir bottom">F</div>
+        <div class="noir bottom">G</div>
+        <div class="noir bottom">H</div>
+        <div class="noir corner"></div>
       </div>
     </div>
-    <br/>
-    <br/>
-    
-    <popup id="popup-match">
-        <a cible="popup:popup-match" class="btn-loose" href="/index.html">Abandonner</a>
-        <p>Créer un nouveau match ?</p>
-        <p>Retourner à la liste des matchs</p>
-    </popup>   
+    <div class="center">
+      <button id="loose">Abandonner</button>
+    </div>
+    <div class="popup" id="popup">
+      <div class="overlay"></div>
+      <div class="popup-content"></div>
+      <h2>Match Terminé</h2>
+      <p>Votre MATCH EST FINI</p>
+      <div class="controls">
+        <button class="bck-accueil">Retour Accueil</button>
+        <button class="bck-list">Retour liste match</button>
+      </div>
+    </div>
   </main>
 </body>
 
